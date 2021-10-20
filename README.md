@@ -15,8 +15,8 @@ interactive console-based baseball simulation game
 
 
 ### gameplay
-Simulates fully randomized outcomes for each batter
+ - Simulates fully randomized outcomes for each batter
 ![Gameplay](images/gameplay.png?raw=true "Gameplay")
 
-End of game statistics featuring boxscore and team totals
+ - End of game statistics featuring boxscore and team totals
 ![EndofGame](images/endofgame.png?raw=true "EndOfGame")
