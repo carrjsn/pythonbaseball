@@ -1,5 +1,5 @@
 # python-baseball
-interactive console-based baseball simulation game
+interactive console-based baseball simulation
 
 ### initialize
 1. `brew install python`
@@ -15,7 +15,7 @@ interactive console-based baseball simulation game
 
 
 ### gameplay
- - Simulates fully randomized outcomes for each batter
+ - Generates fully randomized outcomes for each batter (one pitch per batter)
 ![Gameplay](images/gameplay.png?raw=true "Gameplay")
 
  - End of game statistics featuring boxscore and team totals
