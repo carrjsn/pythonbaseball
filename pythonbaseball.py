@@ -23,7 +23,6 @@ def main():
     print("")
 
     # initialize game stats - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
     home_team_batting_avg = 0
     away_team_batting_avg = 0
 
@@ -76,7 +75,8 @@ def main():
         # end of side
         print("That's the end of the side")
         time.sleep(1.5)
-        print("The " + away_team + " scored " + str(away_team_stat_totals[4] - prev_run) + " runs") # old total runs - previous total
+        # old total runs - previous total
+        print("The " + away_team + " scored " + str(away_team_stat_totals[4] - prev_run) + " runs")
         time.sleep(1.5)
         print(" . . . . . . . . . . . . . . . . . . . . . . . . . .")
         print("The score is the " + away_team + ": " + str(away_team_stat_totals[4]))
@@ -115,8 +115,7 @@ def main():
         print(home_team + ": " + str(home_team_stat_totals[4]))
         print(" . . . . . . . . . . . . . . . . . . . . . . . . . .")
         side = "top"
-        time.sleep(2)
-        time.sleep(2.5)
+        time.sleep(4.5)
 
     # end of game
     time.sleep(2)
@@ -166,15 +165,8 @@ def main():
 
 
 # HELPER FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# def make_boxscore(away, home):
-    # print("Middle " + i + "th" + "Inning")
-    # print("       1   2   3   4   5   6   7   8   9   |  R   H   E")
-    # print("away | " + str(away[1]) + "   " + str(away[2]) + "   " + str(away[3]) +
-    #       "   " + str(away[4]) + "   " + str(away[5]) + "   " + str(away[6]) + "   " + str(away[7]) +
-    #       "   " + str(away[8]) + "   " + str(away[9]))
-    # print("home | " + str(home[1]) + "   " + str(home[2]) + "   " + str(home[3]) +
-    #       "   " + str(home[4]) + "   " + str(home[5]) + "   " + str(home[6]) + "   " + str(home[7]) +
-    #       "   " + str(home[8]) + "   " + str(home[9]))
+def make_boxscore(away, home):
+    pass
 
 def update_stats(inning_stats, team_stat_totals):
 
@@ -183,8 +175,8 @@ def update_stats(inning_stats, team_stat_totals):
 
     return team_stat_totals
 
-
-def get_str_average(batting_avg):     # making bat avg string and adding 0s if less than 3 decimal points
+# making bat avg string and adding 0s if less than 3 decimal points
+def get_str_average(batting_avg):
     if (batting_avg * 1000) % 10 == 0:
         avg = str(batting_avg)
         result = avg + "00"
