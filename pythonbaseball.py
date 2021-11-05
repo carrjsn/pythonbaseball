@@ -399,11 +399,10 @@ def double(runners_on_base):
     else:              # runners_on_base == [1, 1, 0] or [1, 0, 1] or [0, 0, 1] or [0, 1, 0]
         return 1
 
-
-def single(runners_on_base):   # update for more baserunning results
+# update for more baserunning results
+def single(runners_on_base):
 
     # num = random.randint(1,2)
-
     if runners_on_base[0:3] == [0, 1, 0] or runners_on_base[0:3] == [0, 0, 1] or runners_on_base[0:3] == [1, 0, 1]:
         return 1
     elif runners_on_base[0:3] == [1, 1, 1] or runners_on_base[0:3] == [0, 1, 1]:
