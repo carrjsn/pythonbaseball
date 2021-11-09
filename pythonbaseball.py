@@ -188,22 +188,22 @@ def get_str_average(batting_avg):
 # hit percentages
 def at_bat():
     num = random.randint(1, 100)
-    if num <= 2:
-        return "triple"
-    elif 2 < num <= 6:
-        return "homerun"
-    elif 6 < num <= 11:
-        return "double"
-    elif 11 < num <= 28:
-        return "single"
-    elif 28 < num <= 33:
-        return "walk"
-    elif 33 < num <= 34:
-        return "hit by pitch"
-    elif 34 < num <= 35:
-        return "error"
-    else:
-        return "out"
+    # if num <= 2:
+    #     return "triple"
+    # elif 2 < num <= 6:
+    #     return "homerun"
+    # elif 6 < num <= 11:
+    #     return "double"
+    # elif 11 < num <= 28:
+    #     return "single"
+    # elif 28 < num <= 33:
+    #     return "walk"
+    # elif 33 < num <= 34:
+    #     return "hit by pitch"
+    # elif 34 < num <= 35:
+    #     return "error"
+    # else:
+    #     return "out"
 
     # more offense - - -
     if num <= 2:
