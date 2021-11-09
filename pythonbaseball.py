@@ -132,15 +132,7 @@ def main():
     home_team_batting_avg = get_str_average(home_team_batting_avg)
 
     # show boxscore
-    print("                       1   2   3   4   5   6   7   8   9   |  R   H   E")
-    print('{:20}'.format(away_team) + " | " + str(away_boxscore[1]) + "   " + str(away_boxscore[2]) + "   " + str(away_boxscore[3]) +
-          "   " + str(away_boxscore[4]) + "   " + str(away_boxscore[5]) + "   " + str(away_boxscore[6]) + "   " + str(away_boxscore[7]) +
-          "   " + str(away_boxscore[8]) + "   " + str(away_boxscore[9]) + "   |  " + str(away_team_stat_totals[4]).ljust(4) +
-          str(away_team_stat_totals[5]).ljust(4) + str(home_team_stat_totals[2]).ljust(4))
-    print('{:20}'.format(home_team) + " | " + str(home_boxscore[1]) + "   " + str(home_boxscore[2]) + "   " + str(home_boxscore[3]) +
-          "   " + str(home_boxscore[4]) + "   " + str(home_boxscore[5]) + "   " + str(home_boxscore[6]) + "   " + str(home_boxscore[7]) +
-          "   " + str(home_boxscore[8]) + "   " + str(home_boxscore[9]) + "   |  " + str(home_team_stat_totals[4]).ljust(4) +
-          str(home_team_stat_totals[5]).ljust(4) + str(away_team_stat_totals[2]).ljust(4))
+    make_boxscore(away_team, home_team, away_boxscore, home_boxscore, away_team_stat_totals, home_team_stat_totals)
 
     # show team stats
     print(" . . . . . . . . . . . . . . . . . . . . . . . . . .")
@@ -165,8 +157,16 @@ def main():
 
 
 # HELPER FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-def make_boxscore(away, home):
-    pass
+def make_boxscore(away, home, away_box, home_box, away_stats, home_stats):
+    print("                       1   2   3   4   5   6   7   8   9   |  R   H   E")
+    print('{:20}'.format(away) + " | " + str(away_box[1]) + "   " + str(away_box[2]) + "   " + str(away_box[3]) +
+          "   " + str(away_box[4]) + "   " + str(away_box[5]) + "   " + str(away_box[6]) + "   " + str(away_box[7]) +
+          "   " + str(away_box[8]) + "   " + str(away_box[9]) + "   |  " + str(away_stats[4]).ljust(4) +
+          str(away_stats[5]).ljust(4) + str(home_stats[2]).ljust(4))
+    print('{:20}'.format(home) + " | " + str(home_box[1]) + "   " + str(home_box[2]) + "   " + str(home_box[3]) +
+          "   " + str(home_box[4]) + "   " + str(home_box[5]) + "   " + str(home_box[6]) + "   " + str(home_box[7]) +
+          "   " + str(home_box[8]) + "   " + str(home_box[9]) + "   |  " + str(home_stats[4]).ljust(4) +
+          str(home_stats[5]).ljust(4) + str(away_stats[2]).ljust(4))
 
 def update_stats(inning_stats, team_stat_totals):
 
@@ -205,23 +205,23 @@ def at_bat():
     else:
         return "out"
 
-    # # more offense - - -
-    # if num <= 2:
-    #     return "triple"
-    # elif 2 < num <= 7:
-    #     return "homerun"
-    # elif 7 < num <= 13:
-    #     return "double"
-    # elif 13 < num <= 38:
-    #     return "single"
-    # elif 38 < num <= 43:
-    #     return "walk"
-    # elif 43 < num <= 44:
-    #     return "hit by pitch"
-    # elif 44 < num <= 45:
-    #     return "error"
-    # else:
-    #     return "out"
+    # more offense - - -
+    if num <= 2:
+        return "triple"
+    elif 2 < num <= 7:
+        return "homerun"
+    elif 7 < num <= 13:
+        return "double"
+    elif 13 < num <= 38:
+        return "single"
+    elif 38 < num <= 43:
+        return "walk"
+    elif 43 < num <= 44:
+        return "hit by pitch"
+    elif 44 < num <= 45:
+        return "error"
+    else:
+        return "out"
 
 
 def half_inning(i, home_lead, side, num_innings):   # parameters only exist for walk-off case
