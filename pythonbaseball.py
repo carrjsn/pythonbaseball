@@ -20,6 +20,8 @@ def main():
     away_team = input("Enter the away team: ")
 
     num_innings = int(input("Enter the number of innings you would like to play: "))
+
+    max_off = input('Enter "yes" for maximum offense or "no" for more realistic scoring: ')
     print("")
 
     # initialize game stats - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -56,7 +58,7 @@ def main():
         prev_run = away_team_stat_totals[4]
 
         # main half-inning loop (simulate half inning and get stats)
-        half_inning_stats = half_inning(i, home_team_lead, side, num_innings)
+        half_inning_stats = half_inning(i, home_team_lead, side, num_innings, max_off)
 
         # adding inning stats to game totals
         away_team_stat_totals = update_stats(half_inning_stats, away_team_stat_totals)
@@ -92,7 +94,7 @@ def main():
         prev_run = home_team_stat_totals[4]
 
         # main half-inning loop (simulate half inning and get stats)
-        half_inning_stats = half_inning(i, home_team_lead, side, num_innings)
+        half_inning_stats = half_inning(i, home_team_lead, side, num_innings, max_off)
 
         # adding inning stats to game totals
         home_team_stat_totals = update_stats(half_inning_stats, home_team_stat_totals)
@@ -186,46 +188,48 @@ def get_str_average(batting_avg):
 
 
 # hit percentages
-def at_bat():
+def at_bat(isMax):
     num = random.randint(1, 100)
-    # if num <= 2:
-    #     return "triple"
-    # elif 2 < num <= 6:
-    #     return "homerun"
-    # elif 6 < num <= 11:
-    #     return "double"
-    # elif 11 < num <= 28:
-    #     return "single"
-    # elif 28 < num <= 33:
-    #     return "walk"
-    # elif 33 < num <= 34:
-    #     return "hit by pitch"
-    # elif 34 < num <= 35:
-    #     return "error"
-    # else:
-    #     return "out"
+
+    if isMax.lower() == 'no':
+      if num <= 2:
+          return "triple"
+      elif 2 < num <= 6:
+          return "homerun"
+      elif 6 < num <= 11:
+          return "double"
+      elif 11 < num <= 28:
+          return "single"
+      elif 28 < num <= 33:
+          return "walk"
+      elif 33 < num <= 34:
+          return "hit by pitch"
+      elif 34 < num <= 35:
+          return "error"
+      else:
+          return "out"
 
     # more offense - - -
-    if num <= 2:
-        return "triple"
-    elif 2 < num <= 7:
-        return "homerun"
-    elif 7 < num <= 13:
-        return "double"
-    elif 13 < num <= 38:
-        return "single"
-    elif 38 < num <= 43:
-        return "walk"
-    elif 43 < num <= 44:
-        return "hit by pitch"
-    elif 44 < num <= 45:
-        return "error"
     else:
-        return "out"
+      if num <= 2:
+          return "triple"
+      elif 2 < num <= 7:
+          return "homerun"
+      elif 7 < num <= 13:
+          return "double"
+      elif 13 < num <= 38:
+          return "single"
+      elif 38 < num <= 43:
+          return "walk"
+      elif 43 < num <= 44:
+          return "hit by pitch"
+      elif 44 < num <= 45:
+          return "error"
+      else:
+          return "out"
 
 
-def half_inning(i, home_lead, side, num_innings):   # parameters only exist for walk-off case
-
+def half_inning(i, home_lead, side, num_innings, max_off):   # parameters only exist for walk-off case
     outs = 0
     base_runners = [0, 0, 0, ' the bases empty >>']  # or [0, 0, 0, '']  w/ empty string
 
@@ -244,7 +248,7 @@ def half_inning(i, home_lead, side, num_innings):   # parameters only exist for 
 
         time.sleep(3.5)
 
-        result = at_bat()     # todo: take in batter name as parameter
+        result = at_bat(max_off)     # todo: take in batter name as parameter
         if result == 'triple':
             print("It's a triple!")
             runs_in = triple(base_runners)
